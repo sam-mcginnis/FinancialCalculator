@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sam's Calculator</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/style2.css" rel="stylesheet" />
+
+    </head>
+    <body class="sb-nav-fixed">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+              <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"><div id="jquery-script-menu">
+                <div class="jquery-script-center">
+                <div id="carbon-block"></div>
+                </div>
+                <div class="jquery-script-clear"></div>
+                </div>
+                  <div class="container">
+                    <br><br><br><br><br><br><br><br>
+                    <div class="alert alert-info mt-3 text-center"><h2>Select A Date To Record Your Budget</h2></div>
+                    <div>
+                <span class="month-year"></span>
+                <table class="alert alert-info date_table table table-bordered table-striped">
+                <tr>
+                <th>S</th> <th>M</th> <th>T</th><th>W</th>
+                <th>T</th> <th>F</th> <th>S</th>
+                </tr>
+                </table>
+                <span class="prev-month btn btn-primary">Previous</span>
+                <span class="next-month btn btn-primary">next</span>
+                <div class="alert alert-info output mt-3">Selected Date: </div>
+                </div>
+                  </div>
+                </div>
+              <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-9 col-lg-8 mx-auto">
+                          
+                        <h3 class="login-heading mb-4">Welcome back!</h3>
+                        <div calendar class="calendar" id="calendar"></div>  
+                                <div class="form-label-group">
+                                    <input type="text" id="inputUserame" class="form-control" >
+                                    <label for="inputUserame">Total budeget for month</label>
+                                  </div>
+                    
+                                  <div class="form-label-group">
+                                    <input type="text" id="inputFood" class="form-control">
+                                    <label for="inputFood">Amount spent on groceries</label>
+                                  </div>
+
+                                  <div class="form-label-group">
+                                    <input type="text" id="inputGas" class="form-control">
+                                    <label for="inputGas">Amount spent on gas</label>
+                                  </div>
+                    
+                                  <div class="form-label-group">
+                                    <input type="text" id="inputBills" class="form-control" >
+                                    <label for="inputBills">Amount spent on bills</label>
+                                  </div>
+                    
+                                  <div class="form-label-group">
+                                    <input type="text" id="inputFun" class="form-control">
+                                    <label for="inputFun">Amount spent on fun</label>
+                                  </div>
+                    
+                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="populateGraphs">Calculate</button>                                
+                                  
+                                  <br><br><br><br><br><br><br><br><br>
+                                  
+                                  <h3 class="text-center login-heading mb-4">Select A Month To Remove</h3>
+                                  <hr>
+                                  <div class="text-center"><button id="leftArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonthRemove"> Selected Month </span><button id="rightArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button></div>
+                                  <br>
+                                  <button class="btn btn-lg btn-danger btn-block btn-login text-uppercase font-weight-bold mb-2" id="removeButton">Remove</button>                                
+                  
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+              <div class="card mb-4">
+                  <div class="card-header">
+                      <i class="fas fa-chart-area mr-1"></i>
+                      Area Chart - Overall Spending
+                  </div>
+                  <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
+                  <div class="card-footer small text-muted"></div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="card mb-4">
+                          <div id="scrollHere" class="card-header">
+                              <i class="fas fa-chart-bar mr-1"></i>
+                              Bar Chart - Total Monthly Spent
+                          </div>
+                          <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+                          <div class="card-footer small text-muted"></div>
+                      </div>
+                  </div>
+                  <div class="col-lg-6">
+                      <div class="card mb-4">
+                          <div class="card-header">
+                              <i class="fas fa-chart-pie mr-1"></i>
+                              Pie Chart - Percent of Spending: <button id="leftArrow" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonth"> Selected Month </span><button id="rightArrow" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button>
+                          </div>
+                          <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+                          <div class="card-footer small text-muted"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid">
+              <div class="d-flex align-items-center justify-content-between small">
+                  <div class="text-muted">Copyright &copy; McGinnis software</div>
+              </div>
+          </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                <script src="./js/osmanli_calendar.js"></script>
+                <script>
+                  var refinedDate;
+                  var start_date_dialog = osmanli_calendar
+                $('.prev-month').click(function () {start_date_dialog.pre_month()});
+                $('.next-month').click(function () {start_date_dialog.next_month()});
+                
+                start_date_dialog.init();
+                start_date_dialog.ON_SELECT_FUNC = function(){
+                    refinedDate = String(osmanli_calendar.SELECT_DATE).substr(4, 6);
+                  $('.output').html("Selected Date: " + refinedDate);
+                }
+                </script>
+                <script type="text/javascript">
+                
+                  var _gaq = _gaq || [];
+                  _gaq.push(['_setAccount', 'UA-36251023-1']);
+                  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+                  _gaq.push(['_trackPageview']);
+                
+                  (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                  })();
+                
+                </script>
+                <script>
+                try {
+                  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+                    return true;
+                  }).catch(function(e) {
+                    var carbonScript = document.createElement("script");
+                    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+                    carbonScript.id = "_carbonads_js";
+                    document.getElementById("carbon-block").appendChild(carbonScript);
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
+                </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="./js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="./js/chart-area-demo.js"></script>
+        <script src="./js/chart-bar-demo.js"></script>
+        <script src="./js/chart-pie-demo.js"></script>
+        <script src="./js/delete.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>
