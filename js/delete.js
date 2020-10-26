@@ -1,11 +1,11 @@
 var valueofIforRemove;
 function keepTrack(){
     valueofIforRemove = myLineChart.data.labels.length -1;
-
+    theValueOfI = arrayOfsetData.length - 1;
 }
 function downMonthRemove(){
     let monthArray = myLineChart.data.labels;
-
+    
     valueofIforRemove--;
     if(monthArray[valueofIforRemove] == undefined){
         valueofIforRemove++;
@@ -34,6 +34,19 @@ function upMonthRemove(){
 function removeButton(){
     let word = document.getElementById("displayMonthRemove").innerHTML.trim();
     let areaIndex = myLineChart.data.labels.indexOf(word);
+    for(let i = 0; i <= arrayOfsetData.length - 1; i++)
+    {   
+        let pieAreaIndex = arrayOfsetData[i].indexOf(word);
+        
+        if(pieAreaIndex != -1)
+        {
+
+            arrayOfsetData.splice(i, 1);
+            myPieChart.data.datasets[0].data = arrayOfsetData[arrayOfsetData.length-1];
+            break;
+        }
+    }
+
     
     myLineChart.data.labels.splice(areaIndex, 1);
     myLineChart.data.datasets[0].data.splice(areaIndex, 1);
@@ -42,15 +55,28 @@ function removeButton(){
     myBarChart.data.datasets[0].data.splice(areaIndex, 1);
     myBarChart.data.datasets[1].data.splice(areaIndex, 1);
 
+    
+
 
     myLineChart.update();
     myBarChart.update();    
+    myPieChart.update();
+    if (arrayOfsetData[arrayOfsetData.length - 1] == undefined || myLineChart.data.labels[myLineChart.data.labels.length -1] == undefined)
+    {
+        document.getElementById("displayMonth").innerHTML = " Selected Month ";
+        document.getElementById("displayMonthRemove").innerHTML= " Selected Month ";
 
-    document.getElementById("displayMonthRemove").innerHTML= " " + myLineChart.data.labels[myLineChart.data.labels.length -1] + " ";
+    }
+    else{
+        document.getElementById("displayMonth").innerHTML = " " + arrayOfsetData[arrayOfsetData.length - 1][4] + " ";
+        document.getElementById("displayMonthRemove").innerHTML= " " + myLineChart.data.labels[myLineChart.data.labels.length -1] + " ";
+    }
 
 }
+document.getElementById("removeButton").addEventListener("click", keepTrack);
 document.getElementById("populateGraphs").addEventListener("click", keepTrack);
 document.getElementById("leftArrowRemove").addEventListener("click", downMonthRemove);
 document.getElementById("rightArrowRemove").addEventListener("click", upMonthRemove);
 document.getElementById("removeButton").addEventListener("click", removeButton);
+
 
