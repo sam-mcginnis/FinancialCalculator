@@ -8,15 +8,29 @@ var theValueOfI;
 var nameOfTheMonth = document.getElementById("displayMonth").innerHTML;
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
-  type: 'pie',
+  type: 'doughnut',
   data: {
-    labels: ["Bills", "Fun", "Gas", "Groceries"],
+    labels: ["Bills", "Fun", "Gas", "Groceries", "g", "g", "g", "g", "g", "g"],
     datasets: [{
       month: [],
       data: [],
       backgroundColor: ['#007bff', '#dc3545', '#636300', '#28a745'],
     }],
-  },
+  },options: {
+		tooltips: {
+			callbacks: {
+				label: function(tooltipItem, data) {
+          var allData = data.datasets[tooltipItem.datasetIndex].data;
+					var tooltipLabel = data.labels[tooltipItem.index];
+          var tooltipData = allData[tooltipItem.index];
+					var total = Number($("#inputUserame").val());
+
+					var tooltipPercentage = Math.round((tooltipData / total) * 100);
+					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
+				}
+			}
+		}
+	}
 });
 
 function updateConfigByMutating(chart, setData) {
