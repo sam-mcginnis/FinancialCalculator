@@ -10,7 +10,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Bills", "Fun", "Gas", "Groceries", "g", "g", "g", "g", "g", "g"],
+    labels: ["Bills", "Fun", "Gas", "Groceries"],
     datasets: [{
       month: [],
       data: [],
