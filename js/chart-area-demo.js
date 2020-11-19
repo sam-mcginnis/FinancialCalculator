@@ -9,7 +9,21 @@ var myLineChart = new Chart(ctx, {
   data: {
     labels: [],
     datasets: [{
-      label: "Total spent this month",
+      label: "Total spent on Debit Card",
+      lineTension: 0.3,
+      backgroundColor: "rgba(255, 77, 136,0.2)",
+      borderColor: "rgba(255, 77, 136,1)",
+      pointRadius: 5,
+      pointBackgroundColor: "rgba(255, 77, 136,1)",
+      pointBorderColor: "rgba(255,255,255,0.8)",
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(255, 77, 136,1)",
+      pointHitRadius: 50,
+      pointBorderWidth: 2,
+      data: [],
+    },
+    {
+      label: "Total spent on Credit Card",
       lineTension: 0.3,
       backgroundColor: "rgba(2,117,216,0.2)",
       borderColor: "rgba(2,117,216,1)",
@@ -169,11 +183,13 @@ function sortDate(month, MB){
   }
 }
 
-function addAreaData(chart, label, data) {
+function addAreaData(chart, label, debit, credit) {
   
   chart.data.labels.push(label);
-  
-  chart.data.datasets[0].data.push(data);
+
+  chart.data.datasets[0].data.push(debit);
+
+  chart.data.datasets[1].data.push(credit);
 
   sortDate(myLineChart.data.labels, myLineChart.data.datasets[0].data);
   //console.log(chart.data.datasets[1].data);
@@ -182,19 +198,17 @@ function addAreaData(chart, label, data) {
 }
 
 function calculateLine(){
-  let budget = Number($("#inputUserame").val());
-  let groceries =Number($("#inputFood").val());
-  let bills = Number($("#inputBills").val());
-  let gas = Number($("#inputGas").val());
-  let fun = Number($("#inputFun").val());
-  let Total = groceries + bills + gas + fun;
 
+  let debit = Number(document.getElementById("totalDebit").value);
+  let credit = Number(document.getElementById("totalCredit").value);
+  
+  
 
-  if (refinedDate == undefined){
+  if (refinedDate == undefined || refinedDate == "lid Da"){
     alert("Must select date first");
   }
   else{
-    addAreaData(myLineChart, refinedDate, Total);
+    addAreaData(myLineChart, refinedDate, debit, credit);
   }
 }
 document.getElementById("populateGraphs").addEventListener("click", calculateLine);

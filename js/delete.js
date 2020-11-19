@@ -42,7 +42,17 @@ function removeButton(){
         {
 
             arrayOfsetData.splice(i, 1);
+            arrayOfsetLabel.splice(i, 1); 
+            arrayOfsetColor.splice(i, 1);   
             myPieChart.data.datasets[0].data = arrayOfsetData[arrayOfsetData.length-1];
+            myPieChart.data.datasets[0].backgroundColor = arrayOfsetColor[arrayOfsetColor.length-1];
+            if(arrayOfsetLabel[arrayOfsetLabel.length-1] == undefined)
+            {
+                myPieChart.data.labels = []    
+            }
+            else{
+                myPieChart.data.labels = arrayOfsetLabel[arrayOfsetLabel.length-1];
+            }
             break;
         }
     }
@@ -50,6 +60,7 @@ function removeButton(){
     
     myLineChart.data.labels.splice(areaIndex, 1);
     myLineChart.data.datasets[0].data.splice(areaIndex, 1);
+    myLineChart.data.datasets[1].data.splice(areaIndex, 1);
 
     myBarChart.data.labels.splice(areaIndex, 1);
     myBarChart.data.datasets[0].data.splice(areaIndex, 1);
@@ -68,7 +79,7 @@ function removeButton(){
 
     }
     else{
-        document.getElementById("displayMonth").innerHTML = " " + arrayOfsetData[arrayOfsetData.length - 1][4] + " ";
+        document.getElementById("displayMonth").innerHTML = " " + arrayOfsetData[arrayOfsetData.length - 1][arrayOfsetData[arrayOfsetData.length - 1].length -1] + " ";
         document.getElementById("displayMonthRemove").innerHTML= " " + myLineChart.data.labels[myLineChart.data.labels.length -1] + " ";
     }
 

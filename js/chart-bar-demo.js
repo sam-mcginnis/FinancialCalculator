@@ -195,14 +195,17 @@ function addData(chart, label, data, budget) {
 }
 
 function calculate(){
-  let budget = Number($("#inputUserame").val());
-  let groceries =Number($("#inputFood").val());
-  let bills = Number($("#inputBills").val());
-  let gas = Number($("#inputGas").val());
-  let fun = Number($("#inputFun").val());
-  let Total = groceries + bills + gas + fun;
+  let budget = Number($("#totalBudget").val());
+  let Total = 0;
+  
+  for(let i = 1; i <= categoryName.length; i++)
+  {
+    let target = String(i + ".");
+    let value = Number(document.getElementById(target).value);
+      Total += value;
 
-  if(refinedDate != undefined){
+  }
+  if(refinedDate != "lid Da" && refinedDate != undefined)  {
     addData(myBarChart, refinedDate, Total, budget);
   }
    
