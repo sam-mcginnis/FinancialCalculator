@@ -6,7 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        
         <title>Sam's Calculator</title>
+
+        <link rel="shortcut icon" href="./images/favi.png" type="image/x-icon">  
         <link href="css/styles.css" rel="stylesheet" />
         <link href="css/style2.css" rel="stylesheet" />
 
@@ -14,7 +17,8 @@
     <body class="sb-nav-fixed">
         <div class="container-fluid">
             <div class="row no-gutter">
-              <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"><div id="jquery-script-menu">
+              <div class="d-none d-md-flex col-md-8 col-lg-6 bg-image">
+                <div id="jquery-script-menu">
                 <div class="jquery-script-center">
                 <div id="carbon-block"></div>
                 </div>
@@ -37,60 +41,92 @@
                 </div>
                   </div>
                 </div>
-              <div class="col-md-8 col-lg-6">
+              <div class="col-md-4 col-lg-6">
                 <div class="login d-flex align-items-center py-5">
                   <div class="container">
                     <div class="row">
                       <div class="col-md-9 col-lg-8 mx-auto">
-                          
-                        <h3 class="login-heading mb-4">Welcome back!</h3>
-                        <div calendar class="calendar" id="calendar"></div>  
-                                <div class="form-label-group">
-                                    <input type="text" id="inputUserame" class="form-control" >
-                                    <label for="inputUserame">Total budeget for month</label>
-                                  </div>
-                    
+                        <h3 class="login-heading mb-4">Welcome back!</h3>  
                                   <div class="form-label-group">
-                                    <input type="text" id="inputFood" class="form-control">
-                                    <label for="inputFood">Amount spent on groceries</label>
+                                    <input type="text" id="totalBudget" class="form-control" >
+                                    <label for="totalBudget">Total budeget for month</label>
                                   </div>
-
+                          </div>
+                          <div class="col-md-6 col-lg-6 mx-auto">
                                   <div class="form-label-group">
-                                    <input type="text" id="inputGas" class="form-control">
-                                    <label for="inputGas">Amount spent on gas</label>
+                                    <input type="text" id="totalDebit" class="form-control" >
+                                    <label for="totalDebit">Total spent on Debit Card</label>
                                   </div>
-                    
+                          </div>
+                          <div class="col-md-6 col-lg-6 mx-auto">
                                   <div class="form-label-group">
-                                    <input type="text" id="inputBills" class="form-control" >
-                                    <label for="inputBills">Amount spent on bills</label>
+                                    <input type="text" id="totalCredit" class="form-control" >
+                                    <label for="totalCredit">Total spent on Credit Card</label>
                                   </div>
-                    
-                                  <div class="form-label-group">
-                                    <input type="text" id="inputFun" class="form-control">
-                                    <label for="inputFun">Amount spent on fun</label>
-                                  </div>
-                    
-                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="populateGraphs">Calculate</button>                                
+                          </div>
+                                  <div class="col-md-9 col-lg-8 mx-auto">
+                                  <div id="appendCat"></div>
                                   
-                                  <br><br><br><br><br><br><br><br><br>
-                                  
-                                  <h3 class="text-center login-heading mb-4">Select A Month To Remove</h3>
-                                  <hr>
-                                  <div class="text-center"><button id="leftArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonthRemove"> Selected Month </span><button id="rightArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button></div>
-                                  <br>
-                                  <button class="btn btn-lg btn-danger btn-block btn-login text-uppercase font-weight-bold mb-2" id="removeButton">Remove</button>                                
-                  
+                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="populateGraphs">Calculate</button>                                                  
                       </div>
                     </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="row align-items-center no-gutters">
+            
+            <div class="col-md-8 col-lg-6 ">
+              <div class="  py-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-9 col-lg-8 mx-auto">
+                      
+                      <h2 class="text-center login-heading mb-4">Add a Spending Category</h2>
+                      <hr>
+                      <br>
+                      <div class="form-label-group">
+                        <input type="text" id="addCat" class="form-control" >
+                        <label for="addCat">What type of spending would you like to add</label>
+                        <br>
+                        <button class="btn btn-lg btn-success btn-block btn-login text-uppercase font-weight-bold mb-2" id="populateCat">Add</button>                                                  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-4 col-lg-6">
+              <div class=" align-items-center py-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-9 col-lg-8 mx-auto">
+                      <h3 class="text-center login-heading mb-4">Select A Month To Remove</h3>
+                      <hr>
+                      <div class="text-center"><button id="leftArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonthRemove"> Selected Month </span><button id="rightArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button></div>
+                      <br>
+                      <button class="btn btn-lg btn-danger btn-block btn-login text-uppercase font-weight-bold mb-2" id="removeButton">Remove</button>                                
+                      <br>
+                      <br>
+                      <h3 class="text-center login-heading mb-4">Select A Category To Remove</h3>
+                      <hr>
+                      <div class="text-center"><button id="leftArrowCat" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="catRemove"> Selected Category </span><button id="rightArrowCat" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button></div>
+                      <br>
+                      <button class="btn btn-lg btn-danger btn-block btn-login text-uppercase font-weight-bold mb-2" id="removeCatButton">Remove</button>                                
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
           <br>
               <div class="card mb-4">
                   <div class="card-header">
                       <i class="fas fa-chart-area mr-1"></i>
-                      Area Chart - Overall Spending
+                      Area Chart - 
                   </div>
                   <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
                   <div class="card-footer small text-muted"></div>
@@ -118,7 +154,6 @@
                   </div>
               </div>
           </div>
-      </main>
       <footer class="py-4 bg-light mt-auto">
           <div class="container-fluid">
               <div class="d-flex align-items-center justify-content-between small">
@@ -178,6 +213,7 @@
         <script src="./js/chart-bar-demo.js"></script>
         <script src="./js/chart-pie-demo.js"></script>
         <script src="./js/delete.js"></script>
+        <script src="./js/addCategory.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
 
