@@ -6,6 +6,7 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 var arrayOfsetData = [];
 var arrayOfsetLabel = [];
 var arrayOfsetColor = [];
+var percentTotal = [];
 var theValueOfI;
 var nameOfTheMonth = document.getElementById("displayMonth").innerHTML;
 var ctx = document.getElementById("myPieChart");
@@ -25,7 +26,7 @@ var myPieChart = new Chart(ctx, {
           var allData = data.datasets[tooltipItem.datasetIndex].data;
 					var tooltipLabel = data.labels[tooltipItem.index];
           var tooltipData = allData[tooltipItem.index];
-					var total = Number($("#totalBudget").val());
+					var total = percentTotal[theValueOfI];
 
 					var tooltipPercentage = Math.round((tooltipData / total) * 100);
 					return tooltipLabel + ': ' + tooltipData + ' (' + tooltipPercentage + '%)';
@@ -53,9 +54,11 @@ function updateConfigByMutating(chart, setData, setLabel, setColor) {
 function calculatePie(){
   let setLabel= [];
   let setColor = []
-  
-  let count= 0;
   let setData = [];
+  let budget = Number($("#totalBudget").val());
+
+  let count= 0;
+  
   for(let i = 0; i <=categoryName.length -1; i++)
   {
     count++;
@@ -72,6 +75,7 @@ function calculatePie(){
   arrayOfsetData.push(setData);
   arrayOfsetLabel.push(setLabel);
   arrayOfsetColor.push(setColor);
+  percentTotal.push(budget);
 
   theValueOfI = arrayOfsetData.length - 1;
 
