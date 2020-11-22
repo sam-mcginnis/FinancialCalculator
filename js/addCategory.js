@@ -33,6 +33,8 @@ function addCat(){
         categoryName[arrayCount] = newCat;
         categoryArray[arrayCount] = String(categoryCount + ".");
         document.getElementById("catRemove").innerHTML = " " + categoryName[arrayCount] + " ";
+        document.getElementById("addCat").value = "";
+
 
         arrayCount1 = categoryArray.length -1;
         arrayCount++;

@@ -43,10 +43,13 @@ function saveChanges() {
 
 
     if(firstTime == null){
+        let popup = document.getElementById("myPopup");
+        popup.classList.add("show");
         localStorage.setItem("firstTime", "false");
 
     }
     else{
+        
         let line = JSON.parse(localStorage.getItem("lineChart"));
         let bar = JSON.parse(localStorage.getItem("barChart"));
         let pie = JSON.parse(localStorage.getItem("pieChart"));
@@ -119,10 +122,13 @@ function saveChanges() {
         if(categoryArray.length != 0){
             document.getElementById("catRemove").innerHTML = " " + categoryName[i - 1] + " ";
         }    
-        myPieChart.update();
+        myPieChart.update(); 
     }
 }
-
-
+function Directions() {
+    let popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+  }
+document.getElementById("thePopUp").addEventListener("click", Directions);
 window.addEventListener("load", saveChanges);
 window.addEventListener("unload", storeData);
