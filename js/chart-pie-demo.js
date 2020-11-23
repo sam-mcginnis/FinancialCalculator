@@ -71,7 +71,49 @@ function calculatePie(){
 
   
  if(refinedDate != "lid Da" && refinedDate != undefined){
-  setData.push(refinedDate);
+ 
+  let month = refinedDate;
+  let day = month.split("/");
+    if(day[0] == "01"){
+      month = "Jan " + day[1];
+    }
+    else if(day[0] == "02"){
+      month = "Feb " + day[1];
+    }
+    else if(day[0] == "03"){
+      month = "Mar " + day[1];
+    }
+    else if(day[0] == "04"){
+      month = "Apr " + day[1];
+    }
+    else if(day[0] == "05"){
+      month = "May " + day[1];
+    }
+    else if(day[0] == "06"){
+      month = "Jun " + day[1];
+    }
+    else if(day[0] == "07"){
+      month = "Jul " + day[1];
+    }
+    else if(day[0] == "08"){
+      month = "Aug " + day[1];
+    }
+    else if(day[0] == "09"){
+      month = "Sep " + day[1];
+    }
+    else if(day[0] == "10"){
+      month = "Oct " + day[1];
+    }
+    else if(day[0] == "11"){
+      month = "Nov " + day[1];
+    }
+    else if(day[0] == "12"){
+      month = "Dec " + day[1];
+    }
+    else
+
+    console.log(month)
+  setData.push(month);
   arrayOfsetData.push(setData);
   arrayOfsetLabel.push(setLabel);
   arrayOfsetColor.push(setColor);

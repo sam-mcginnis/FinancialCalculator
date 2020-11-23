@@ -67,14 +67,16 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
-function sortDate(month, MB){
+function sortDate(month, MB, monthBudget){
   let i = 0;
   let A1 = [];
   let A2 = [];
 
   for(i = 0; i < month.length; i++)
   {
+
     let day =month[i].split(" ");
+
     if(day[0] == "Jan"){
       month[i] = "01" + day[1];
     }
@@ -111,10 +113,11 @@ function sortDate(month, MB){
     else if(day[0] == "Dec"){
       month[i] = "12" + day[1];
     }
-    else
-      continue;
-    
-    A1 = [month[i], MB[i]];
+    else{
+      day =month[i].split("/");
+      month[i] = day[0] + day[1];
+    }
+    A1 = [month[i], MB[i], monthBudget[i]];
     A2.push(A1);
   }
   
@@ -125,63 +128,90 @@ function sortDate(month, MB){
   
   for(i = 0; i < month.length; i++)
   {
-    day = A2[i][0].slice(0, 2);
+    let day = A2[i][0].slice(0, 2);
+    console.log(day);
     let day2 = A2[i][0].slice(2);
-    
+    console.log(day2);
+
 
     if(day == "01"){
       month[i] = "Jan " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "02"){
       month[i] = "Feb " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "03"){
       month[i] = "Mar " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "04"){
       month[i] = "Apr " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "05"){
       month[i] = "May " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "06"){
       month[i] = "Jun " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "07"){
       month[i] = "Jul " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "08"){
       month[i] = "Aug " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "09"){
       month[i] = "Sep " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "10"){
       month[i] = "Oct " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "11"){
       month[i] = "Nov " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else if(day == "12"){
       month[i] = "Dec " + day2;
       MB[i] = A2[i][1];
+      monthBudget[i] = A2[i][2];
+
     }
     else
       continue;
     
   }
 }
+
 
 function addAreaData(chart, label, debit, credit) {
   
@@ -191,8 +221,7 @@ function addAreaData(chart, label, debit, credit) {
 
   chart.data.datasets[1].data.push(credit);
 
-  sortDate(myLineChart.data.labels, myLineChart.data.datasets[0].data);
-  //console.log(chart.data.datasets[1].data);
+  sortDate(myLineChart.data.labels, myLineChart.data.datasets[0].data, myLineChart.data.datasets[1].data);
   
   chart.update();
 }

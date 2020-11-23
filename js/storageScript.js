@@ -131,4 +131,4 @@ function Directions() {
   }
 document.getElementById("thePopUp").addEventListener("click", Directions);
 window.addEventListener("load", saveChanges);
-window.addEventListener("unload", storeData);
+window.addEventListener("beforeunload", storeData);
