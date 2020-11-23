@@ -130,6 +130,15 @@
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
+.datepicker td, .datepicker th {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.85rem;
+}
+
+.datepicker {
+  margin-bottom: 3rem;
+}
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
