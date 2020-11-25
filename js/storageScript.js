@@ -106,13 +106,13 @@ function saveChanges() {
                 categoryArray[i] = String(count + ".");
             }
         
-        if (arrayOfsetData[arrayOfsetData.length - 1] == undefined || myLineChart.data.labels[myLineChart.data.labels.length -1] == undefined)
+        if (setMonth[setMonth.length -1] == undefined || setMonth[setMonth.length -1] == undefined)
         {
             document.getElementById("displayMonth").innerHTML = " Selected Month ";
             document.getElementById("displayMonthRemove").innerHTML= " Selected Month ";
 
         }
-        if(arrayOfsetData[arrayOfsetData.length - 1] != undefined || myLineChart.data.labels[myLineChart.data.labels.length -1] != undefined){
+        if(setMonth[setMonth.length -1] != undefined || setMonth[setMonth.length -1] != undefined){
             document.getElementById("displayMonth").innerHTML = " " + setMonth[setMonth.length -1] + " ";
             document.getElementById("displayMonthRemove").innerHTML= " " + setMonth[setMonth.length -1] + " ";
         }
