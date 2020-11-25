@@ -129,9 +129,7 @@ function sortDate(month, MB, monthBudget){
   for(i = 0; i < month.length; i++)
   {
     let day = A2[i][0].slice(0, 2);
-    console.log(day);
     let day2 = A2[i][0].slice(2);
-    console.log(day2);
 
 
     if(day == "01"){

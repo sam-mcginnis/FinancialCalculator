@@ -36,14 +36,15 @@ function removeButton(){
     let areaIndex = myLineChart.data.labels.indexOf(word);
     for(let i = 0; i <= arrayOfsetData.length - 1; i++)
     {   
-        let pieAreaIndex = arrayOfsetData[i].indexOf(word);
-        
+        let pieAreaIndex = setMonth[i].indexOf(word);
         if(pieAreaIndex != -1)
         {
 
             arrayOfsetData.splice(i, 1);
             arrayOfsetLabel.splice(i, 1); 
-            arrayOfsetColor.splice(i, 1);   
+            arrayOfsetColor.splice(i, 1); 
+            setMonth.splice(i,1);  
+            percentTotal.splice(i, 1);
             myPieChart.data.datasets[0].data = arrayOfsetData[arrayOfsetData.length-1];
             myPieChart.data.datasets[0].backgroundColor = arrayOfsetColor[arrayOfsetColor.length-1];
             if(arrayOfsetLabel[arrayOfsetLabel.length-1] == undefined)
@@ -55,8 +56,9 @@ function removeButton(){
             }
             break;
         }
+    
     }
-
+    
     
     myLineChart.data.labels.splice(areaIndex, 1);
     myLineChart.data.datasets[0].data.splice(areaIndex, 1);
@@ -67,7 +69,7 @@ function removeButton(){
     myBarChart.data.datasets[1].data.splice(areaIndex, 1);
 
     
-
+    theValueOfI = percentTotal.length -1;
 
     myLineChart.update();
     myBarChart.update();    
@@ -79,8 +81,8 @@ function removeButton(){
 
     }
     else{
-        document.getElementById("displayMonth").innerHTML = " " + arrayOfsetData[arrayOfsetData.length - 1][arrayOfsetData[arrayOfsetData.length - 1].length -1] + " ";
-        document.getElementById("displayMonthRemove").innerHTML= " " + myLineChart.data.labels[myLineChart.data.labels.length -1] + " ";
+        document.getElementById("displayMonth").innerHTML = " " + setMonth[setMonth.length -1] + " ";
+        document.getElementById("displayMonthRemove").innerHTML= " " + setMonth[setMonth.length -1] + " ";
     }
 
 }

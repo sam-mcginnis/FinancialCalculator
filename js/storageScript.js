@@ -26,7 +26,8 @@ function storeData(){
         data10: categoryArray,
         data11: categoryName,
         data12: valueofIforRemove,
-        data13: percentTotal
+        data13: percentTotal,
+        data14: setMonth
 
 
     }
@@ -79,6 +80,7 @@ function saveChanges() {
         categoryName = pie.data11;
         valueofIforRemove = pie.data12;
         percentTotal = pie.data13;
+        setMonth = pie.data14;
 
         for(i=0; i< categoryArray.length; i++)
             {
@@ -111,8 +113,8 @@ function saveChanges() {
 
         }
         if(arrayOfsetData[arrayOfsetData.length - 1] != undefined || myLineChart.data.labels[myLineChart.data.labels.length -1] != undefined){
-            document.getElementById("displayMonth").innerHTML = " " + arrayOfsetData[arrayOfsetData.length - 1][arrayOfsetData[arrayOfsetData.length - 1].length -1] + " ";
-            document.getElementById("displayMonthRemove").innerHTML= " " + myLineChart.data.labels[myLineChart.data.labels.length -1] + " ";
+            document.getElementById("displayMonth").innerHTML = " " + setMonth[setMonth.length -1] + " ";
+            document.getElementById("displayMonthRemove").innerHTML= " " + setMonth[setMonth.length -1] + " ";
         }
 
         if(categoryArray.length == 0)

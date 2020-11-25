@@ -113,9 +113,7 @@ function sortBarDate(month, MB, monthBudget){
   for(i = 0; i < month.length; i++)
   {
     let day = A2[i][0].slice(0, 2);
-    console.log(day);
     let day2 = A2[i][0].slice(2);
-    console.log(day2);
 
 
     if(day == "01"){
@@ -206,7 +204,6 @@ function addData(chart, label, data, budget) {
   sortBarDate(myBarChart.data.labels, myBarChart.data.datasets[0].data, chart.data.datasets[1].data);
 
 
-  //console.log(chart.data.datasets[1].data);
   document.getElementById('scrollHere').scrollIntoView();
   chart.update();
 }
@@ -222,7 +219,7 @@ function calculate(){
       Total += value;
 
   }
-  if(refinedDate != "lid Da" && refinedDate != undefined)  {
+  if(refinedDate != undefined)  {
     addData(myBarChart, refinedDate, Total, budget);
   }
    
