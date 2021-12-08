@@ -16,151 +16,116 @@
 
 
     </head>
-    <body class="sb-nav-fixed">
+    <body>
         <div class="container-fluid">
-            <div class="row no-gutter">
-              <div class="col-md-4 col-lg-6">
-                <div class="login d-flex align-items-center py-5">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-9 col-lg-8 mx-auto">
-                        <h3 class="login-heading mb-4">Welcome back - <span class="popup" id="thePopUp"><i class="fas fa-info-circle"></i>
-                          <span class="popuptext" id="myPopup">Directions:<br>Select date to enter data. Then add spending categories (below), to keep track of what you spend monthly bills on. Finally, delete a month or category if you need to! </span>
-                        </span> </h3> 
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-center login-heading mb-4">Welcome back - <span class="popup" id="thePopUp"><i class="fas fa-info-circle"></i>
+                        <span class="popuptext" id="myPopup">Directions:<br>Select date to enter data. Then add spending categories (below), to keep track of what you spend monthly bills on. Finally, delete a month or category if you need to! </span></span> 
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col">
+                        <h2 class="text-center login-heading mb-4">Add an Expence Sheet</h2>
+                        <hr>
+                        <div class="text-center">
+                            <div class="file-input">
+                                <input type="file" id="file" class="file">
+                                <label for="file">Select file</label>
+                              </div>
+                        </div>
                         
-                                  <div class="form-label-group">
-                                    <input type="text" id="totalBudget" class="form-control" >
-                                    <label for="totalBudget">Total budeget for month</label>
-                                  </div>
-                          </div>
-                          <div class="col-md-6 col-lg-6 mx-auto">
-                                  <div class="form-label-group">
-                                    <input type="text" id="totalDebit" class="form-control" >
-                                    <label for="totalDebit">Total spent on Debit Card</label>
-                                  </div>
-                          </div>
-                          <div class="col-md-6 col-lg-6 mx-auto">
-                                  <div class="form-label-group">
-                                    <input type="text" id="totalCredit" class="form-control" >
-                                    <label for="totalCredit">Total spent on Credit Card</label>
-                                  </div>
-                          </div>
-                                  <div class="col-md-9 col-lg-8 mx-auto">  
-                                    <div class="form-group mb-4">
-                                      <div class="datepicker date input-group p-0 shadow-sm">
-                                          <input type="text" placeholder="Select a date to budeget" class="form-control py-4 px-4" id="reservationDate">
-                                          <div class="input-group-append"><span class="input-group-text px-4"><i class="fas fa-calendar-alt"></i></span></div>
-                                      </div>
-                                  </div>                                
-                                  <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" id="populateGraphs">Calculate</button>                                                  
-                      </div>
+                        <div class="form-group mt-4 mb-4" name=datePickerDiv>
+                            <div class="datepicker date input-group p-0 shadow-sm">
+                                <input type="text" placeholder="Select a date to budeget" class="form-control py-4 px-4" id="reservationDate">
+                                <div class="input-group-append"><span class="input-group-text px-4"><i class="fas fa-calendar-alt"></i></span></div>
+                            </div>
+                        </div>                                
+                        <div class="text-center"><button class="btn btn-lg btn-success btn-login text-uppercase font-weight-bold  mb-2" id="populateGraphs">Calculate Expence Report</button></div>                                                  
                     </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 col-lg-6">
-              <div class="login d-flex align-items-center py-5">
-                <div class="container">
-                  <h2 class="text-center login-heading mb-4">Spending categories:</h2>
-                  <div class="row">
-                    <div class="col-md-9 col-lg-8 mx-auto">
-                    <div id="appendCat"></div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          <hr>
-          <div class="row align-items-center no-gutters">
-            
-            <div class="col-md-8 col-lg-6 ">
-              <div class="  py-5">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-9 col-lg-8 mx-auto">
-                      
-                      <h2 class="text-center login-heading mb-4">Add a Spending Category</h2>
-                      <hr>
-                      <br>
-                      <div class="form-label-group">
-                        <input type="text" id="addCat" class="form-control" >
-                        <label for="addCat">What type of spending would you like to add</label>
+                    <div class="col">
+                        <h2 class="text-center login-heading mb-4">Add a Spending Category</h2>
+                        <hr>
                         <br>
-                        <button class="btn btn-lg btn-success btn-block btn-login text-uppercase font-weight-bold mb-2" id="populateCat">Add</button>                                                  
-                      </div>
+                        <div class="form-label-group">
+                            <input type="text" id="addCat" class="form-control" >
+                            <label for="addCat">What type of spending would you like to add</label>
+                            <br>
+                            <button class="btn btn-lg btn-success btn-block btn-login text-uppercase font-weight-bold mb-5" id="populateCat">Add</button>     
+                            <br>
+                            <h2 class="text-center login-heading mb-4">Spending categories:</h2>
+                            <hr> 
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <div id="appendCat"></div>
+                            </div>                                            
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            
-            <div class="col-md-4 col-lg-6">
-              <div class=" align-items-center py-5">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-9 col-lg-8 mx-auto">
-                      <h3 class="text-center login-heading mb-4">Select A Month To Remove</h3>
-                      <hr>
-                      <div class="text-center"><button id="leftArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonthRemove"> Selected Month </span><button id="rightArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button></div>
-                      <br>
-                      <button class="btn btn-lg btn-danger btn-block btn-login text-uppercase font-weight-bold mb-2" id="removeButton">Remove</button>                                
-                      <br>
-                      <br>
-                      <h3 class="text-center login-heading mb-4">Select A Category To Remove</h3>
-                      <hr>
-                      <div class="text-center"><button id="leftArrowCat" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="catRemove"> Selected Category </span><button id="rightArrowCat" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button></div>
-                      <br>
-                      <button class="btn btn-lg btn-danger btn-block btn-login text-uppercase font-weight-bold mb-2" id="removeCatButton">Remove</button>                                
-                    
+            <div class="row mb-2">
+                <div class="col">
+                    <h3 class="text-center login-heading mb-4">Select A Month To Remove</h3>
+                    <hr>
+                    <div class="text-center">
+                        <button id="leftArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonthRemove"> Selected Month </span><button id="rightArrowRemove" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button>
                     </div>
-                  </div>
+                    <br>
+                      <div class="text-center"><button class="btn btn-lg btn-danger btn-login text-uppercase font-weight-bold mb-2" id="removeButton">Remove</button></div>                                
                 </div>
-              </div>
+                <div class="col">
+                    <h3 class="text-center login-heading mb-4">Select A Category To Remove</h3>
+                    <hr>
+                    <div class="text-center">
+                        <button id="leftArrowCat" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="catRemove"> Selected Category </span><button id="rightArrowCat" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button>
+                    </div>
+                    <br>
+                    <div class="text-center"><button class="btn btn-lg btn-danger btn-login text-uppercase font-weight-bold mb-2" id="removeCatButton">Remove</button></div>
+                </div>
             </div>
-            
-          </div>
-          <br>
-              <div class="card mb-4">
-                  <div class="card-header">
-                      <i class="fas fa-chart-area mr-1"></i>
-                      Area Chart - Amount spent on Debit & Credit cards
-                  </div>
-                  <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-                  <div class="card-footer small text-muted"></div>
-              </div>
-              <div class="row">
-                  <div class="col-lg-6">
-                      <div class="card mb-4">
-                          <div id="scrollHere" class="card-header">
-                              <i class="fas fa-chart-bar mr-1"></i>
-                              Bar Chart - Total spent on bills
-                          </div>
-                          <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
-                          <div class="card-footer small text-muted"></div>
-                      </div>
-                  </div>
-                  <div class="col-lg-6">
-                      <div class="card mb-4">
-                          <div class="card-header">
-                              <i class="fas fa-chart-pie mr-1"></i>
-                              Pie Chart - Percent of Spending: <button id="leftArrow" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonth"> Selected Month </span><button id="rightArrow" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button>
-                          </div>
-                          <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                          <div class="card-footer small text-muted"></div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      <footer class="py-4 bg-light mt-auto">
+            <hr name="pageSplit">
+            <div class="row">
+                <div class="col mt-4">
+                    <div class="card mb-4">
+                        <div id="scrollHere" class="card-header">
+                            <i class="fas fa-chart-bar mr-1"></i>Bar Chart - Total spent on bills
+                        </div>
+                        <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
+                        <div class="card-footer small text-muted"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-4">
+                        <div class="card-header pb-4">
+                            <i class="fas fa-chart-area mr-1"></i>
+                            Area Chart - Amount spent on Debit & Credit cards
+                        </div>
+                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="50"></canvas></div>
+                        <div class="card-footer small text-muted"></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-pie mr-1"></i>
+                            Pie Chart - Percent of Spending: <button id="leftArrow" class=" btn btn-primary"><i class="fas fa-caret-square-left"></i></button><span id="displayMonth"> Selected Month </span><button id="rightArrow" class=" btn btn-primary"><i class="fas fa-caret-square-right"></i></button>
+                        </div>
+                        <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+                        <div class="card-footer small text-muted"></div>
+                    </div>
+                </div>
+            </div>
+        <footer class="py-4 bg-light mt-auto">
           <div class="container-fluid">
               <div class="d-flex align-items-center justify-content-between small">
                   <div class="text-muted">Copyright &copy; McGinnis software</div>
               </div>
           </div>
-                </footer>
+        </footer>
             </div>
         </div>
+        <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="./js/scripts.js"></script>
@@ -171,6 +136,7 @@
         <script src="./js/delete.js"></script>
         <script src="./js/addCategory.js"></script>
         <script src="./js/storageScript.js"></script>
+        <script src="./js/excel.js"></script>
         <script src="./js/bootstrap-datepicker.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
