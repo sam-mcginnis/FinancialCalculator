@@ -1,6 +1,6 @@
 var firstTime;
 
-function storeData(){
+function storeData() {
     let area = {
         month: myLineChart.data.labels,
         data0: myLineChart.data.datasets[0].data,
@@ -11,7 +11,7 @@ function storeData(){
         data0: myBarChart.data.datasets[0].data,
         data1: myBarChart.data.datasets[1].data
     }
-    let pie= {
+    let pie = {
         month: myPieChart.data.datasets[0].month,
         data0: myPieChart.data.datasets[0].data,
         data1: myPieChart.data.labels,
@@ -31,26 +31,25 @@ function storeData(){
 
 
     }
-    
+
     localStorage.setItem("lineChart", JSON.stringify(area));
     localStorage.setItem("barChart", JSON.stringify(bar));
     localStorage.setItem("pieChart", JSON.stringify(pie));
 
 }
 
-function saveChanges() { 
-    let i, count= 0;
-    firstTime= JSON.parse(localStorage.getItem("firstTime"));
+function saveChanges() {
+    let i, count = 0;
+    firstTime = JSON.parse(localStorage.getItem("firstTime"));
 
 
-    if(firstTime == null){
+    if (firstTime == null) {
         let popup = document.getElementById("myPopup");
         popup.classList.add("show");
         localStorage.setItem("firstTime", "false");
 
-    }
-    else{
-        
+    } else {
+
         let line = JSON.parse(localStorage.getItem("lineChart"));
         let bar = JSON.parse(localStorage.getItem("barChart"));
         let pie = JSON.parse(localStorage.getItem("pieChart"));
@@ -82,55 +81,53 @@ function saveChanges() {
         percentTotal = pie.data13;
         setMonth = pie.data14;
 
-        for(i=0; i< categoryArray.length; i++)
-            {
+        for (i = 0; i < categoryArray.length; i++) {
 
-                count++;
+            count++;
 
-                let newDiv = document.createElement('div');
-                newDiv.className = "form-label-group";
-        
-                let newInput = document.createElement("input");
-                newInput.type = "text";
-                newInput.id = String(count + ".");
-                newInput.className = "form-control";
-        
-                let newLabel = document.createElement('label');
-                newLabel.htmlFor = String(count + ".");
-                newLabel.innerHTML = String(count + ". Amount spent on " + categoryName[i]);
-        
-                newDiv.appendChild(newInput);
-                newDiv.append(newLabel);
-                $("#appendCat").append(newDiv);
-        
-                categoryArray[i] = String(count + ".");
-            }
-        
-        if (setMonth[setMonth.length -1] == undefined || setMonth[setMonth.length -1] == undefined)
-        {
+            let newDiv = document.createElement('div');
+            newDiv.className = "form-label-group";
+
+            let newInput = document.createElement("input");
+            newInput.type = "text";
+            newInput.id = String(count + ".");
+            newInput.className = "form-control";
+
+            let newLabel = document.createElement('label');
+            newLabel.htmlFor = String(count + ".");
+            newLabel.innerHTML = String(count + ". Amount spent on " + categoryName[i]);
+
+            newDiv.appendChild(newInput);
+            newDiv.append(newLabel);
+            $("#appendCat").append(newDiv);
+
+            categoryArray[i] = String(count + ".");
+        }
+
+        if (setMonth[setMonth.length - 1] == undefined || setMonth[setMonth.length - 1] == undefined) {
             document.getElementById("displayMonth").innerHTML = " Selected Month ";
-            document.getElementById("displayMonthRemove").innerHTML= " Selected Month ";
+            document.getElementById("displayMonthRemove").innerHTML = " Selected Month ";
 
         }
-        if(setMonth[setMonth.length -1] != undefined || setMonth[setMonth.length -1] != undefined){
-            document.getElementById("displayMonth").innerHTML = " " + setMonth[setMonth.length -1] + " ";
-            document.getElementById("displayMonthRemove").innerHTML= " " + setMonth[setMonth.length -1] + " ";
+        if (setMonth[setMonth.length - 1] != undefined || setMonth[setMonth.length - 1] != undefined) {
+            document.getElementById("displayMonth").innerHTML = " " + setMonth[setMonth.length - 1] + " ";
+            document.getElementById("displayMonthRemove").innerHTML = " " + setMonth[setMonth.length - 1] + " ";
         }
 
-        if(categoryArray.length == 0)
-        {
-            document.getElementById("catRemove").innerHTML = " Selected Category ";    
+        if (categoryArray.length == 0) {
+            document.getElementById("catRemove").innerHTML = " Selected Category ";
         }
-        if(categoryArray.length != 0){
+        if (categoryArray.length != 0) {
             document.getElementById("catRemove").innerHTML = " " + categoryName[i - 1] + " ";
-        }    
-        myPieChart.update(); 
+        }
+        myPieChart.update();
     }
 }
+
 function Directions() {
     let popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
-  }
+}
 document.getElementById("thePopUp").addEventListener("click", Directions);
 window.addEventListener("load", saveChanges);
 window.addEventListener("beforeunload", storeData);
