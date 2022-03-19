@@ -25,15 +25,32 @@
                     </h3>
                 </div>
             </div>
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                       <h2 id="modalHeader"></h2>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="myList"></ul>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
             <div class="row">
                     <div class="col">
                         <h2 class="text-center login-heading mb-4">Add an Expence Sheet</h2>
                         <hr>
                         <div class="text-center">
-                            <div class="file-input">
-                                <input type="file" id="file" class="file">
-                                <label for="file">Select file</label>
-                              </div>
+                            <label class="btn btn-outline-primary btn-square-sm" for="DC">Expence Report</label>
+                            <input id="DC" type="file" class="upload">                            
                         </div>
                         
                         <div class="form-group mt-4 mb-4" name=datePickerDiv>
@@ -42,7 +59,7 @@
                                 <div class="input-group-append"><span class="input-group-text px-4"><i class="fas fa-calendar-alt"></i></span></div>
                             </div>
                         </div>                                
-                        <div class="text-center"><button class="btn btn-lg btn-success btn-login text-uppercase font-weight-bold  mb-2" id="populateGraphs">Calculate Expence Report</button></div>                                                  
+                        <div class="text-center"><button class="btn btn-lg btn-success btn-login text-uppercase font-weight-bold  mb-2" id="calculateExcel">Calculate Expence Report</button></div>                                                  
                     </div>
                     <div class="col">
                         <h2 class="text-center login-heading mb-4">Add a Spending Category</h2>
@@ -87,7 +104,7 @@
                 <div class="col mt-4">
                     <div class="card mb-4">
                         <div id="scrollHere" class="card-header">
-                            <i class="fas fa-chart-bar mr-1"></i>Bar Chart - Total spent on bills
+                            <i class="fas fa-chart-bar mr-1"></i>Bar Chart - Average Monthly Expence
                         </div>
                         <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
                         <div class="card-footer small text-muted"></div>
@@ -136,7 +153,6 @@
         <script src="./js/delete.js"></script>
         <script src="./js/addCategory.js"></script>
         <script src="./js/storageScript.js"></script>
-        <script src="./js/excel.js"></script>
         <script src="./js/bootstrap-datepicker.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 

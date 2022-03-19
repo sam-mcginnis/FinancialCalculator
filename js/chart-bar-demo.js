@@ -1,4 +1,4 @@
-// Set new default font family and font color to mimic Bootstrap's default styling
+ // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
@@ -9,13 +9,13 @@ var myBarChart = new Chart(ctx, {
   data: {
     labels: [],
     datasets: [{
-      label: "Total spent",
+      label: "Total debits",
       backgroundColor: "rgba(255, 0, 0, 1)",
       borderColor: "rgba(255, 0, 0, 1)",
       data: [],
     }, 
     {
-      label: "Total budget",
+      label: "Total credits",
       backgroundColor: "rgba(0, 100, 0, 1)",
       borderColor: "rgba(0, 100, 0, 1)",
       data: [],
@@ -37,7 +37,7 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 7500,
+          max: 10000,
           maxTicksLimit: 10
         },
         gridLines: {
@@ -197,9 +197,9 @@ function addData(chart, label, data, budget) {
   
   chart.data.labels.push(label);
 
-  chart.data.datasets[0].data.push(data);
+  chart.data.datasets[0].data.push(parseFloat(data).toFixed(2));
 
-  chart.data.datasets[1].data.push(budget);
+  chart.data.datasets[1].data.push(parseFloat(budget).toFixed(2));
 
   sortBarDate(myBarChart.data.labels, myBarChart.data.datasets[0].data, chart.data.datasets[1].data);
 
@@ -209,19 +209,22 @@ function addData(chart, label, data, budget) {
 }
 
 function calculate(){
-  let budget = Number($("#totalBudget").val());
-  let Total = 0;
   
-  for(let i = 1; i <= categoryName.length; i++)
-  {
-    let target = String(i + ".");
-    let value = Number(document.getElementById(target).value);
-      Total += value;
-
-  }
   if(refinedDate != undefined)  {
     addData(myBarChart, refinedDate, Total, budget);
   }
-   
 }
-document.getElementById("populateGraphs").addEventListener("click", calculate);
+function loadExcel(){
+    const excelFile = document.getElementById('DC')
+    readXlsxFile(excelFile.files[0]).then(function(data){
+      let spent = data[3][2]
+      let earned = data[2][2]
+        if(refinedDate != undefined)  {
+          addData(myBarChart, refinedDate, Math.abs(spent), earned);
+        }
+    })    
+}
+
+document.getElementById('calculateExcel').addEventListener('click', loadExcel)
+
+   

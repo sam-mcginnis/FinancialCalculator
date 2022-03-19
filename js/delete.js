@@ -39,7 +39,13 @@ function removeButton(){
         let pieAreaIndex = setMonth[i].indexOf(word);
         if(pieAreaIndex != -1)
         {
-
+            modalGroceryList.splice(i, 1)
+            modalCashWithdrawlList.splice(i, 1)
+            modalTransportationList.splice(i, 1)
+            modalChipotleList.splice(i, 1)
+            modalTakeOutList.splice(i, 1)
+            modalotherSpendingList.splice(i, 1)
+            
             arrayOfsetData.splice(i, 1);
             arrayOfsetLabel.splice(i, 1); 
             arrayOfsetColor.splice(i, 1); 
@@ -87,7 +93,7 @@ function removeButton(){
 
 }
 document.getElementById("removeButton").addEventListener("click", keepTrack);
-document.getElementById("populateGraphs").addEventListener("click", keepTrack);
+document.getElementById("calculateExcel").addEventListener("click", keepTrack);
 document.getElementById("leftArrowRemove").addEventListener("click", downMonthRemove);
 document.getElementById("rightArrowRemove").addEventListener("click", upMonthRemove);
 document.getElementById("removeButton").addEventListener("click", removeButton);
